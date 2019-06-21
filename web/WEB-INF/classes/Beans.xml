@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--正常情况下的配置-->
+    <!--
+    <bean id="BeansAutowire_SpellChecker" class="com.BeansAutowire.BeansAutowire_SpellChecker"></bean>
+
+    <bean id="BeansAutowire_TextEditor" class="com.BeansAutowire.BeansAutowire_TextEditor">
+        <property name="beansAutowire_spellChecker" ref="BeansAutowire_SpellChecker"/>
+        <property name="name" value="Generic Text Editor"/>
+    </bean>
+    -->
+
+    <!--自动装配byName情况下的配置-->
+    <bean id="beansAutowire_spellChecker" class="com.BeansAutowire.BeansAutowire_SpellChecker"></bean>
+
+    <bean id="BeansAutowire_TextEditor" class="com.BeansAutowire.BeansAutowire_TextEditor"
+          autowire="byName">
+        <property name="name" value="Generic Text Editor"/>
+    </bean>
+</beans>

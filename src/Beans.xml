@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--正常情况下的配置-->
+    <!--
+    <bean id="BeansAutowire_SpellChecker" class="com.BeansAutowire.BeansAutowire_SpellChecker"></bean>
+
+    <bean id="BeansAutowire_TextEditor" class="com.BeansAutowire.BeansAutowire_TextEditor">
+        <property name="beansAutowire_spellChecker" ref="BeansAutowire_SpellChecker"/>
+        <property name="name" value="Generic Text Editor"/>
+    </bean>
+    -->
+
+    <!--自动装配byName情况下的配置-->
+    <bean id="beansAutowire_spellChecker" class="com.BeansAutowire.BeansAutowire_SpellChecker"></bean>
+    <!--
+    由于beans BeansAutowire_TextEditor中有一个属性名为beansAutowire_spellChecker，所以另一个beans的名称应该也
+    为beansAutowire_spellChecker，而且不能改变大小写，一定要保持相同，不能是像BeansAutowire_Spellchecker之类的名称，
+    否则会抛出异常。
+    即：Spring 容器看作 beans，在 XML 配置文件中 beans 的 auto-wire 属性设置为 byName。然后，它尝试将它的属性与配置文件
+        中定义为相同名称的 beans 进行匹配和连接。如果找到匹配项，它将注入这些 beans，否则，它将抛出异常。
+    -->
+    <bean id="BeansAutowire_TextEditor" class="com.BeansAutowire.BeansAutowire_TextEditor"
+          autowire="byName">
+        <property name="name" value="Generic Text Editor"/>
+    </bean>
+</beans>
