@@ -31,4 +31,11 @@
         <property name="name" value="Generic Text Editor"/>
     </bean>
     <bean id="SpringBeansAutowire_byType_SpellChecker" class="com.BeansAutowire.SpringBeansAutowire_byType_SpellChecker"/>
+
+    <bean id="SpringBeansAutowire_Constructor_SpellChecker" class="com.BeansAutowire.SpringBeansAutowire_Constructor_SpellChecker"/>
+
+    <bean id="SpringBeansAutowire_Constructor_TextEditor" class="com.BeansAutowire.SpringBeansAutowire_Constructor_TextEditor"
+          autowire="constructor">
+        <constructor-arg value="Generic Text Editor"/>
+    </bean>
 </beans>
