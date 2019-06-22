@@ -33,3 +33,29 @@
         重写的可能性	你可以使用总是重写自动装配的 <constructor-arg>和 <property> 设置来指定依赖关系。
         原始数据类型	你不能自动装配所谓的简单类型包括基本类型，字符串和类。
         混乱的本质	    自动装配不如显式装配精确，所以如果可能的话尽可能使用显式装配。
+
+2、Spring 自动装配 ‘byName’
+
+    2.1 这种模式由属性名称指定自动装配。Spring 容器看作 beans，在 XML 配置文件中 beans 的 auto-wire 属性设置为 byName。
+        然后，它尝试将它的属性与配置文件中定义为相同名称的 beans 进行匹配和连接。如果找到匹配项，它将注入这些 beans，否则，
+        它将抛出异常。
+
+        例如，在配置文件中，如果一个 bean 定义设置为自动装配 byName，并且它包含 spellChecker 属性
+        （即，它有一个 setSpellChecker(...) 方法），那么 Spring 就会查找定义名为 spellChecker 的 bean，并且用它来设置
+        这个属性。你仍然可以使用 <property> 标签连接其余的属性。下面的例子将说明这个概念。
+
+    2.2 创建BeansAutowire_SpellChecker.java和BeansAutowire_TextEditor.java以及测试类BeansAutowire_Main.java,编写相应的
+         代码，配置好bean之后运行。其中，bean的配置如下：
+                <!--自动装配byName情况下的配置-->
+                <bean id="beansAutowire_spellChecker" class="com.BeansAutowire.BeansAutowire_SpellChecker"></bean>
+                <!--
+                由于beans BeansAutowire_TextEditor中有一个属性名为beansAutowire_spellChecker，所以另一个beans的名称应该也
+                为beansAutowire_spellChecker，而且不能改变大小写，一定要保持相同，不能是像BeansAutowire_Spellchecker之类的名称，
+                否则会抛出异常。
+                即：Spring 容器看作 beans，在 XML 配置文件中 beans 的 auto-wire 属性设置为 byName。然后，它尝试将它的属性与配置文件
+                    中定义为相同名称的 beans 进行匹配和连接。如果找到匹配项，它将注入这些 beans，否则，它将抛出异常。
+                -->
+                <bean id="BeansAutowire_TextEditor" class="com.BeansAutowire.BeansAutowire_TextEditor"
+                      autowire="byName">
+                    <property name="name" value="Generic Text Editor"/>
+                </bean>
