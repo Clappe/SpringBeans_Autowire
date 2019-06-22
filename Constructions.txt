@@ -59,3 +59,21 @@
                       autowire="byName">
                     <property name="name" value="Generic Text Editor"/>
                 </bean>
+
+3、Spring 自动装配 `byType`
+
+    3.1 这种模式由属性类型指定自动装配。Spring 容器看作 beans，在 XML 配置文件中 beans 的 autowire 属性设置为 byType。
+        然后，如果它的 type 恰好与配置文件中 beans 名称中的一个相匹配，它将尝试匹配和连接它的属性。如果找到匹配项，
+        它将注入这些 beans，否则，它将抛出异常。
+
+        例如，在配置文件中，如果一个 bean 定义设置为自动装配 byType，并且它包含 SpellChecker 类型的 spellChecker 属性，
+        那么 Spring 就会查找定义名为 SpellChecker 的 bean，并且用它来设置这个属性。你仍然可以使用 <property> 标签连接其
+        余属性。下面的例子将说明这个概念，你会发现和上面的例子没有什么区别，除了 XML 配置文件已经被改变。
+
+    3.2 创建SpringBeansAutowire_byType_TextEditor.java和SpringBeansAutowire_byType_SpellChecker,java以及测试类
+        SpringBeansAutowire_byType_Main.java，编写相应的代码，配置好bean并运行。其中，bean的配置内容如下：
+            <bean id="SpringBeansAutowire_byType_TextEditor" class="com.BeansAutowire.SpringBeansAutowire_byType_TextEditor"
+                      autowire="byType">
+                <property name="name" value="Generic Text Editor"/>
+            </bean>
+            <bean id="SpringBeansAutowire_byType_SpellChecker" class="com.BeansAutowire.SpringBeansAutowire_byType_SpellChecker"/>

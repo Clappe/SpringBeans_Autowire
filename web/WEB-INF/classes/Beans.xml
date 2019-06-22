@@ -25,4 +25,10 @@
           autowire="byName">
         <property name="name" value="Generic Text Editor"/>
     </bean>
+
+    <bean id="SpringBeansAutowire_byType_TextEditor" class="com.BeansAutowire.SpringBeansAutowire_byType_TextEditor"
+          autowire="byType">
+        <property name="name" value="Generic Text Editor"/>
+    </bean>
+    <bean id="SpringBeansAutowire_byType_SpellChecker" class="com.BeansAutowire.SpringBeansAutowire_byType_SpellChecker"/>
 </beans>
